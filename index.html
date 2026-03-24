@@ -14,17 +14,25 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, var(--cmi-blue), var(--cmi-dark));
   color: white;
 }
 
-/* Container */
+/* GANZER WIDGET */
 .wrapper {
-  padding: 15px;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* OBEN: WETTER */
+.top {
+  background: linear-gradient(180deg, var(--cmi-blue), var(--cmi-dark));
+  padding: 20px;
   text-align: center;
 }
 
-/* Wetter Karte (kompakt) */
+/* Wetter Karte */
 .card {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(8px);
@@ -36,7 +44,6 @@ body {
 
 .greeting {
   font-size: 20px;
-  margin-bottom: 4px;
 }
 
 .city {
@@ -54,20 +61,12 @@ body {
   font-size: 14px;
 }
 
-/* Übergang */
-.fade {
-  height: 20px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
-  margin-top: -10px;
-}
-
-/* GROSSE Illustration */
-.illustration {
-  width: 100%;
-  height: 200px; /* 🔥 viel grösser */
-  object-fit: cover;
-  object-position: center; /* mittig reinzoomen */
-  margin-top: 10px;
+/* UNTEN: GROSSE ILLUSTRATION */
+.bottom {
+  flex: 1; /* 🔥 nimmt restlichen Platz */
+  background-image: url("cmi-illustration.jpg");
+  background-size: cover; /* 🔥 füllt alles */
+  background-position: center;
 }
 </style>
 </head>
@@ -75,17 +74,19 @@ body {
 <body>
 
 <div class="wrapper">
-  <div class="card">
-    <div class="greeting" id="greeting">Guten Tag 👋</div>
-    <div class="city">Zürich</div>
-    <div class="temp">14°C</div>
-    <div class="desc">Leicht bewölkt</div>
+
+  <div class="top">
+    <div class="card">
+      <div class="greeting" id="greeting">Guten Tag 👋</div>
+      <div class="city">Zürich</div>
+      <div class="temp">14°C</div>
+      <div class="desc">Leicht bewölkt</div>
+    </div>
   </div>
 
-  <div class="fade"></div>
+  <!-- 🔥 HIER ist das grosse Bild -->
+  <div class="bottom"></div>
 
-  <!-- grosse Illustration -->
-  <img class="illustration" src="cmi-illustration.jpg" alt="CMI Illustration">
 </div>
 
 <script>
