@@ -24,13 +24,13 @@ body {
   text-align: center;
 }
 
-/* Wetter Karte (kleiner) */
+/* Wetter Karte (kompakt) */
 .card {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(8px);
   border-radius: 16px;
   padding: 15px;
-  max-width: 360px;
+  max-width: 340px;
   margin: 0 auto;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .temp {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: bold;
   margin: 6px 0;
 }
@@ -54,21 +54,20 @@ body {
   font-size: 14px;
 }
 
-/* Illustration (grösser + besser sichtbar) */
-.illustration {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  object-position: center top;
-  margin-top: 12px;
-  border-top: 2px solid rgba(255,255,255,0.2);
+/* Übergang */
+.fade {
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+  margin-top: -10px;
 }
 
-/* sanfter Übergang */
-.fade {
-  height: 15px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.15), transparent);
-  margin-top: -10px;
+/* GROSSE Illustration */
+.illustration {
+  width: 100%;
+  height: 200px; /* 🔥 viel grösser */
+  object-fit: cover;
+  object-position: center; /* mittig reinzoomen */
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -85,7 +84,7 @@ body {
 
   <div class="fade"></div>
 
-  <!-- grössere Illustration -->
+  <!-- grosse Illustration -->
   <img class="illustration" src="cmi-illustration.jpg" alt="CMI Illustration">
 </div>
 
