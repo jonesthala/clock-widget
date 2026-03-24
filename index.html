@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMI Wetter Widget</title>
+
+<style>
+:root {
+  --cmi-blue: #009DDB;
+  --cmi-dark: #0077A6;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, var(--cmi-blue), var(--cmi-dark));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.greeting {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.city {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.temp {
+  font-size: 60px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.desc {
+  font-size: 18px;
+}
+
+/* ILLUSTRATION AREA */
+.illustration {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+/* weicher Übergang */
+.illustration::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--cmi-dark));
+  z-index: 2;
+}
+
+/* Bild */
+.illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+</style>
+</head>
+
+<body>
+
+<div class="content">
+  <div class="card">
+    <div class="greeting" id="greeting">Guten Tag 👋</div>
+    <div class="city">Zürich</div>
+    <div class="temp">14°C</div>
+    <div class="desc">Leicht bewölkt</div>
+  </div>
+</div>
+
+<div class="illustration">
+  <img src="cmi-illustration.jpg" alt="CMI Illustration">
+</div>
+
+<script>
+function updateGreeting() {
+  const hour = new Date().getHours();
+  let greeting = "Guten Tag 👋";
+
+  if (hour < 12) greeting = "Guten Morgen 👋";
+  else if (hour >= 18) greeting = "Guten Abend 👋";
+
+  document.getElementById("greeting").textContent = greeting;
+}
+
+updateGreeting();
+</script>
+
+</body>
+</html>
